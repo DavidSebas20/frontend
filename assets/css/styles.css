@@ -1,0 +1,256 @@
+/* Reset de márgenes y rellenos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo global */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+h1 {
+    font-size: 32px;
+    color: #4a90e2;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Párrafos */
+p {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Lista de enlaces */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin: 15px 0;
+    text-align: center;
+}
+
+ul li a {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 18px;
+    text-decoration: none;
+    background-color: #4a90e2;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover en los enlaces */
+ul li a:hover {
+    background-color: #357ab7;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    font-size: 14px;
+    color: #aaa;
+    margin-top: 40px;
+}
+
+/* Estilos para el header */
+header {
+    background-color: #4a90e2; /* Fondo azul */
+    color: white; /* Texto blanco */
+    padding: 20px 0; /* Espaciado vertical */
+    text-align: center; /* Centrado de texto */
+}
+
+header h1 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white; /* Color de texto blanco */
+    text-decoration: none; /* Elimina el subrayado */
+    margin: 0 15px; /* Espaciado entre los enlaces */
+    font-size: 18px; /* Tamaño de fuente */
+    transition: color 0.3s ease; /* Transición suave al cambiar color */
+}
+
+nav a:hover {
+    color: #ffcc00; /* Color dorado al pasar el mouse */
+}
+
+/* Estilos generales para la página de gestión de contactos */
+h1 {
+    font-size: 28px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+
+.btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin: 5px;
+}
+
+.btn-agregar {
+    background-color: #4CAF50; /* Verde para agregar */
+}
+
+.btn-agregar:hover {
+    background-color: #45a049;
+}
+
+.btn-editar {
+    background-color: #FF9800; /* Naranja para editar */
+}
+
+.btn-editar:hover {
+    background-color: #e68900;
+}
+
+.btn-map {
+    background-color: #350fb3 ; /* Azul para editar */
+}
+
+.btn-map:hover {
+    background-color: #0b2e78 ;
+}
+
+.btn-eliminar {
+    background-color: #F44336; /* Rojo para eliminar */
+}
+
+.btn-eliminar:hover {
+    background-color: #d32f2f;
+}
+
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Espaciado entre botones y tabla */
+a.btn {
+    margin-top: 10px;
+    display: inline-block;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #333;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+form input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+form button {
+    padding: 12px 20px;
+    background-color: #4CAF50; /* Verde para guardar */
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Espaciado y márgenes */
+form input[type="text"], form input[type="email"] {
+    margin-bottom: 15px;
+}
+
+form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Mensajes de error */
+.error-message {
+    color: #F44336;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
