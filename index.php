@@ -1,9 +1,13 @@
-<?php include 'includes/header.php'; ?>
 <link rel="stylesheet" href="assets/css/styles.css">
-<p>Selecciona una sección para comenzar:</p>
-<ul>
-    <li><a href="contactos.php">Gestión de Contactos</a></li>
-    <li><a href="eventos.php">Gestión de Eventos</a></li>
-    <li><a href="ubicaciones.php">Gestión de Ubicaciones</a></li>
-</ul>
-<?php include 'includes/footer.php'; ?>
+
+<div class="container">
+    <?php include 'includes/header.php'; ?>
+    <h2>Bienvenido al Sistema</h2>
+    <p>Selecciona una opción para continuar:</p>
+    <ul>
+        <li><a href="registrar.php">Registrar</a></li>
+        <li><a href="consultar.php">Consultar</a></li>
+        <li><a href="gestionar.php">Gestionar</a></li>
+    </ul>
+    <?php include 'includes/footer.php'; ?>
+</div>

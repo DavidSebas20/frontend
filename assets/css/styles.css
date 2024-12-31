@@ -5,41 +5,119 @@
     box-sizing: border-box;
 }
 
-/* Estilo global */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
+    background: linear-gradient(to right, #003366, #00ccff); /* Fondo degradado */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Centrar el contenedor */
+    justify-content: center;
+    min-height: 100vh; /* Altura completa de la ventana */
 }
 
-/* Contenedor principal */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
+    max-width: 1500px;
+    background: white;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column; /* Mantiene los elementos en columna */
+    position: relative; /* Asegura que el header esté relativo al contenedor */
+    height: fit-content;
 }
 
-/* Título principal */
-h1 {
-    font-size: 32px;
-    color: #4a90e2;
-    margin-bottom: 20px;
+/* Header dentro del contenedor */
+header {
+    background-color: #7546cb;
+    color: white;
+    padding: 15px;
     text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 8px 8px 0 0;
+    position: absolute; /* Fija el header dentro del contenedor */
+    top: 0; /* Alineado a la parte superior del contenedor */
+    left: 0; /* Alineado al borde izquierdo del contenedor */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    z-index: 10; /* Asegura que esté encima de otros elementos */
 }
 
-/* Párrafos */
+/* Ajuste para el contenido del contenedor */
+.container > *:not(header) {
+    margin-top: 20px; /* Reduce el espacio entre el header y el contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinea el contenido al inicio */
+    align-items: center;
+    height: fit-content;
+}
+
+header h1 {
+    color: white;
+    font-size: 32px;
+    margin: 0;
+    font-weight: bold;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffcc00; /* Color dorado al pasar el mouse */
+}
+
+/* Estilo para el contenido dentro del contenedor */
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
 p {
     font-size: 18px;
     text-align: center;
     margin-bottom: 30px;
 }
 
-/* Lista de enlaces */
+/* Botón para contactos */
+.btn-contactos {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-contactos:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Botón para eventos */
+.btn-eventos {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-eventos:hover {
+    background-color: #1e7e34;
+    transform: scale(1.05);
+}
+
+/* Botón para ubicaciones */
+.btn-ubicaciones {
+    background-color: #ffc107;
+    color: black;
+}
+
+.btn-ubicaciones:hover {
+    background-color: #e0a800;
+    transform: scale(1.05);
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -61,7 +139,6 @@ ul li a {
     transition: background-color 0.3s ease;
 }
 
-/* Efecto hover en los enlaces */
 ul li a:hover {
     background-color: #357ab7;
 }
@@ -74,23 +151,9 @@ footer {
     margin-top: 40px;
 }
 
-/* Estilos para el header */
-header {
-    background-color: #4a90e2; /* Fondo azul */
-    color: white; /* Texto blanco */
-    padding: 20px 0; /* Espaciado vertical */
-    text-align: center; /* Centrado de texto */
-}
-
-header h1 {
-    color: white;
-    font-size: 32px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
 
 nav {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 nav a {
@@ -110,9 +173,20 @@ h1 {
     font-size: 28px;
     color: #333;
     text-align: center;
-    margin-bottom: 20px;
+
 }
 
+.container table {
+    display: table; /* Restaura el comportamiento predeterminado de la tabla */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+}
+
+.imagen-tabla {
+    width: 50px; /* Ancho fijo */
+    height: 50px; /* Alto fijo */
+    object-fit: cover; /* Asegura que la imagen se recorte y mantenga proporción */
+    border-radius: 4px; /* Opcional: bordes redondeados */
+}
 
 
 .btn {
@@ -165,12 +239,14 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    table-layout: fixed; 
 }
 
 table th, table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+    word-wrap: break-word;
 }
 
 table th {
@@ -193,13 +269,15 @@ a.btn {
 }
 
 form {
-    max-width: 500px;
-    margin: 0 auto;
+    width: 100%; /* Asegura que el formulario no exceda el contenedor */
+    max-width: 500px; /* Define un ancho máximo */
+    margin: 0 auto; /* Centra el formulario dentro del contenedor */
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9; /* Fondo claro para resaltar */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
+
 
 form label {
     display: block;

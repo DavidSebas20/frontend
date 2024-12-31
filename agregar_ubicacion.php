@@ -1,48 +1,56 @@
-<?php
-include 'includes/header.php';
-include 'includes/api_client.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = [
-        'Titulo' => $_POST['titulo'],
-        'Direccion' => $_POST['direccion'],
-        'Latitud' => $_POST['latitud'],
-        'Longitud' => $_POST['longitud']
-    ];
-
-    try {
-        apiRequest("POST", "ubicaciones", $data);
-        header("Location: ubicaciones.php");
-        exit;
-    } catch (Exception $e) {
-        echo "<p>Error: {$e->getMessage()}</p>";
-    }
-}
-?>
-
 <link rel="stylesheet" href="assets/css/styles.css">
-<!-- Incluir Leaflet CSS y JS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<div class="container">
+    <?php
+    include 'includes/header.php';
+    include 'includes/api_client.php';
 
-<h1>Agregar Ubicación</h1>
-<form method="POST">
-    <label>Titulo:</label>
-    <input type="text" name="titulo" required><br>
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $data = [
+            'Titulo' => $_POST['titulo'],
+            'Direccion' => $_POST['direccion'],
+            'Latitud' => $_POST['latitud'],
+            'Longitud' => $_POST['longitud']
+        ];
 
-    <label>Dirección:</label>
-    <input type="text" name="direccion" id="direccion" required><br>
+        try {
+            apiRequest("POST", "ubicaciones", $data);
+            header("Location: ubicaciones.php");
+            exit;
+        } catch (Exception $e) {
+            echo "<p>Error: {$e->getMessage()}</p>";
+        }
+    }
+    ?>
 
-    <label>Latitud:</label>
-    <input type="text" name="latitud" id="latitud" readonly required><br>
 
-    <label>Longitud:</label>
-    <input type="text" name="longitud" id="longitud" readonly required><br>
+    <!-- Incluir Leaflet CSS y JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <div id="map" style="width: 100%; height: 400px;"></div><br>
+    <h1>Agregar Ubicación</h1>
+    <form method="POST">
+        <label>Titulo:</label>
+        <input type="text" name="titulo" required><br>
 
-    <button type="submit">Guardar</button>
-</form>
+        <label>Dirección:</label>
+        <input type="text" name="direccion" id="direccion" required><br>
+
+        <label>Latitud:</label>
+        <input type="text" name="latitud" id="latitud" readonly required><br>
+
+        <label>Longitud:</label>
+        <input type="text" name="longitud" id="longitud" readonly required><br>
+
+        <div id="map" style="width: 100%; height: 400px;"></div><br>
+
+        <button type="submit">Guardar</button>
+    </form>
+
+
+
+    <?php include 'includes/footer.php'; ?>
+
+</div>
 
 <script>
     var map = L.map('map').setView([0, 0], 2); // Centrado en el mapa globalmente, puedes ajustarlo
@@ -71,5 +79,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById("longitud").value = lng;
     });
 </script>
-
-<?php include 'includes/footer.php'; ?>
