@@ -1,3 +1,12 @@
+<?php
+require_once __DIR__ . '\language.php';
+session_start();
+$lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'es';
+$_SESSION['lang'] = $lang;
+$translations = loadLanguage($lang);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,12 +20,16 @@
 
 <body>
     <header>
-        <h1>Sistema de Gestión</h1>
+        <h1><?= htmlspecialchars($translations['system']) ?></h1>
+        <div class="language-switch">
+            <a href="<?= buildUrlWithParams(['lang' => 'en']) ?>">English</a> |
+            <a href="<?= buildUrlWithParams(['lang' => 'es']) ?>">Español</a>
+        </div>
         <nav>
-            <a href="index.php">Inicio</a>
-            <a href="registrar.php">Registrar</a>
-            <a href="consultar.php">Consultar</a>
-            <a href="gestionar.php">Gestionar</a>
+            <a href="index.php"><?= htmlspecialchars($translations['home']) ?></a>
+            <a href="registrar.php"><?= htmlspecialchars($translations['register']) ?></a>
+            <a href="consultar.php"><?= htmlspecialchars($translations['consult']) ?></a>
+            <a href="gestionar.php"><?= htmlspecialchars($translations['managment']) ?></a>
         </nav>
     </header>
 </body>

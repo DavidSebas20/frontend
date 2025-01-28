@@ -1,6 +1,8 @@
 <?php
-include 'includes/header.php';
 include 'includes/api_client.php';
+
+$successMessage = null;
+$errorMessage = null;
 
 $id = $_GET['id'];
 
@@ -16,10 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         apiRequest("PUT", "contactos/$id", $data);
-        header("Location: contactos.php");
-        exit;
+        $successMessage = $translations['manage_contacts'];
+        try {
+            $ubicaciones = apiRequest("GET", "contactos/$id");
+            $ubicacion = $ubicaciones[0];
+        } catch (Exception $e) {
+            echo "<p>Error: {$e->getMessage()}</p>";
+            exit;
+        }
     } catch (Exception $e) {
-        echo "<p>Error: {$e->getMessage()}</p>";
+        $errorMessage = "Error: " . $e->getMessage();
     }
 } else {
     try {
@@ -33,21 +41,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <link rel="stylesheet" href="assets/css/styles.css">
 
-<h1>Editar Contacto</h1>
-<form method="POST">
-    <label>Saludo:</label>
-    <input type="text" name="saludo" value="<?= htmlspecialchars($ubicacion[1]) ?>" required><br>
-    <label>Nombre Completo:</label>
-    <input type="text" name="nombre_completo" value="<?= htmlspecialchars($ubicacion[2]) ?>" required><br>
-    <label>Número de Identificación:</label>
-    <input type="text" name="numero_identificacion" value="<?= htmlspecialchars($ubicacion[3]) ?>" required><br>
-    <label>Correo Electrónico:</label>
-    <input type="email" name="correo" value="<?= htmlspecialchars($ubicacion[4]) ?>" required><br>
-    <label>Teléfono:</label>
-    <input type="text" name="telefono" value="<?= htmlspecialchars($ubicacion[5]) ?>" required><br>
-    <label>Fotografía (URL):</label>
-    <input type="text" name="fotografia" value="<?= htmlspecialchars($ubicacion[6]) ?>"><br>
-    <button type="submit">Actualizar</button>
-</form>
+<div class="container">
+    <?php include 'includes/header.php'; ?>
+    <h1><?= $translations['edit_contact'] ?></h1>
+    <?php
+    if ($successMessage) {
+        echo "<p style='color: green;'>{$successMessage}</p>";
+    } elseif ($errorMessage) {
+        echo "<p style='color: red;'>{$errorMessage}</p>";
+    }
+    ?>
+    <form method="POST">
+        <label><?= $translations['greeting'] ?>:</label>
+        <input type="text" name="saludo" value="<?= htmlspecialchars($ubicacion[1]) ?>" required><br>
+        <label><?= $translations['full_name'] ?>:</label>
+        <input type="text" name="nombre_completo" value="<?= htmlspecialchars($ubicacion[2]) ?>" required><br>
+        <label><?= $translations['id_number'] ?>:</label>
+        <input type="text" name="numero_identificacion" value="<?= htmlspecialchars($ubicacion[3]) ?>" required><br>
+        <label><?= $translations['email'] ?>:</label>
+        <input type="email" name="correo" value="<?= htmlspecialchars($ubicacion[4]) ?>" required><br>
+        <label><?= $translations['phone'] ?>:</label>
+        <input type="text" name="telefono" value="<?= htmlspecialchars($ubicacion[5]) ?>" required><br>
+        <label><?= $translations['photo'] ?>:</label>
+        <input type="text" name="fotografia" value="<?= htmlspecialchars($ubicacion[6]) ?>"><br>
+        <button type="submit"><?= $translations['update'] ?></button>
+    </form>
 
-<?php include 'includes/footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
+</div>

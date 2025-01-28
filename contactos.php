@@ -8,16 +8,17 @@
     ?>
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <h1>Gestión de Contactos</h1>
+    <h1><?= $translations['manage_contacts'] ?></h1>
     <table>
         <thead>
             <tr>
-                <th>Saludo</th>
-                <th>Nombre Completo</th>
-                <th>Correo Electrónico</th>
-                <th>Teléfono</th>
-                <th>Imagen</th>
-                <th>Acciones</th>
+                <th><?= $translations['greeting'] ?></th>
+                <th><?= $translations['full_name'] ?></th>
+                <th><?= $translations['email'] ?></th>
+                <th><?= $translations['phone'] ?></th>
+                <th><?= $translations['image'] ?></th>
+                <th><?= $translations['created_at'] ?></th>
+                <th><?= $translations['actions'] ?></th>
             </tr>
         </thead>
         <tbody>
@@ -30,9 +31,10 @@
                     <td>
                         <img src="<?= htmlspecialchars($ubicacion[6]) ?>" alt="Imagen de contacto" class="imagen-tabla">
                     </td>
+                    <td><?= htmlspecialchars($ubicacion[7]) ?></td>
                     <td>
-                        <a href="editar_contacto.php?id=<?= $ubicacion[0] ?>" class="btn btn-editar">Editar</a>
-                        <a href="eliminar_contacto.php?id=<?= $ubicacion[0] ?>" class="btn btn-eliminar" onclick="return confirm('¿Estás seguro de eliminar este contacto?')">Eliminar</a>
+                        <a href="editar_contacto.php?id=<?= $ubicacion[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                        <a href="eliminar_contacto.php?id=<?= $ubicacion[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm'] ?>')"><?= $translations['btn_delete'] ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

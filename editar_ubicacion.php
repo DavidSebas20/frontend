@@ -1,8 +1,10 @@
 <?php
-include 'includes/header.php';
 include 'includes/api_client.php';
 
 $id = $_GET['id'];
+
+$successMessage = null; 
+$errorMessage = null;   
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = [
@@ -14,10 +16,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         apiRequest("PUT", "ubicaciones/$id", $data);
-        header("Location: ubicaciones.php");
-        exit;
+        $successMessage = $translations['add_contact'];
+        try {
+            $ubicaciones = apiRequest("GET", "ubicaciones/$id");
+            $ubicacion = $ubicaciones[0];
+        } catch (Exception $e) {
+            echo "<p>Error: {$e->getMessage()}</p>";
+            exit;
+        }
     } catch (Exception $e) {
-        echo "<p>Error: {$e->getMessage()}</p>";
+        $errorMessage = "Error: " . $e->getMessage();
     }
 } else {
     try {
@@ -35,24 +43,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-<h1>Editar Ubicación</h1>
-<form method="POST">
-    <label>Titulo:</label>
-    <input type="text" name="titulo" value="<?= htmlspecialchars($ubicacion[1]) ?>" required><br>
+<div class="container">
+    <?php include 'includes/header.php'; ?>
+    <h1><?= $translations['edit_location'] ?></h1>
+    <?php
+    if ($successMessage) {
+        echo "<p style='color: green;'>{$successMessage}</p>";
+    } elseif ($errorMessage) {
+        echo "<p style='color: red;'>{$errorMessage}</p>";
+    }
+    ?>
+    <form method="POST">
+        <label><?= $translations['title'] ?>:</label>
+        <input type="text" name="titulo" value="<?= htmlspecialchars($ubicacion[1]) ?>" required><br>
 
-    <label>Dirección:</label>
-    <input type="text" name="direccion" value="<?= htmlspecialchars($ubicacion[2]) ?>" id="direccion" required><br>
+        <label><?= $translations['address'] ?>:</label>
+        <input type="text" name="direccion" value="<?= htmlspecialchars($ubicacion[2]) ?>" id="direccion" required><br>
 
-    <label>Latitud:</label>
-    <input type="text" name="latitud" id="latitud" value="<?= htmlspecialchars($ubicacion[3]) ?>" readonly required><br>
+        <label><?= $translations['latitude'] ?>:</label>
+        <input type="text" name="latitud" id="latitud" value="<?= htmlspecialchars($ubicacion[3]) ?>" readonly required><br>
 
-    <label>Longitud:</label>
-    <input type="text" name="longitud" id="longitud" value="<?= htmlspecialchars($ubicacion[4]) ?>" readonly required><br>
+        <label><?= $translations['longitude'] ?>:</label>
+        <input type="text" name="longitud" id="longitud" value="<?= htmlspecialchars($ubicacion[4]) ?>" readonly required><br>
 
-    <div id="map" style="width: 100%; height: 400px;"></div><br>
+        <div id="map" style="width: 100%; height: 400px;"></div><br>
 
-    <button type="submit">Actualizar</button>
-</form>
+        <button type="submit"><?= $translations['update'] ?></button>
+    </form>
+
+
+
+    <?php include 'includes/footer.php'; ?>
+</div>
+
 
 <script>
     var lat = <?= htmlspecialchars($ubicacion[3]) ?>;
@@ -80,5 +103,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         document.getElementById("longitud").value = lng;
     });
 </script>
-
-<?php include 'includes/footer.php'; ?>

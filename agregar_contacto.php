@@ -1,9 +1,12 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 <div class="container">
-    
     <?php
+    ob_start(); 
     include 'includes/header.php';
     include 'includes/api_client.php';
+
+    $successMessage = null; 
+    $errorMessage = null;   
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [
@@ -17,28 +20,34 @@
 
         try {
             apiRequest("POST", "contactos", $data);
-            header("Location: contactos.php");
-            exit;
+            $successMessage = $translations['success_add_contact'];
         } catch (Exception $e) {
-            echo "<p>Error: {$e->getMessage()}</p>";
+            $errorMessage = "Error: " . $e->getMessage();
         }
     }
     ?>
-    <h1>Agregar Contacto</h1>
+    <h1><?= $translations['add_contact'] ?></h1>
+    <?php
+    if ($successMessage) {
+        echo "<p style='color: green;'>{$successMessage}</p>";
+    } elseif ($errorMessage) {
+        echo "<p style='color: red;'>{$errorMessage}</p>";
+    }
+    ?>
     <form method="POST">
-        <label>Saludo:</label>
+        <label><?= $translations['greeting'] ?>:</label>
         <input type="text" name="saludo" required><br>
-        <label>Nombre Completo:</label>
+        <label><?= $translations['full_name'] ?>:</label>
         <input type="text" name="nombre_completo" required><br>
-        <label>Número de Identificación:</label>
+        <label><?= $translations['id_number'] ?>:</label>
         <input type="text" name="numero_identificacion" required><br>
-        <label>Correo Electrónico:</label>
+        <label><?= $translations['email'] ?>:</label>
         <input type="email" name="correo" required><br>
-        <label>Teléfono:</label>
+        <label><?= $translations['phone'] ?>:</label>
         <input type="text" name="telefono" required><br>
-        <label>Fotografía (URL):</label>
+        <label><?= $translations['photo'] ?>:</label>
         <input type="text" name="fotografia"><br>
-        <button type="submit">Guardar</button>
+        <button type="submit"><?= $translations['save'] ?></button>
     </form>
     <?php include 'includes/footer.php'; ?>
 </div>

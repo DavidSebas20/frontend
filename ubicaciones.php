@@ -7,13 +7,14 @@
     ?>
 
     <link rel="stylesheet" href="assets/css/styles.css">
-    <h1>Gestión de Ubicaciones</h1>
+    <h1><?= $translations['manage_locations'] ?></h1>
     <table>
         <thead>
             <tr>
-                <th>Título</th>
-                <th>Dirección</th>
-                <th>Acciones</th>
+                <th><?= $translations['title'] ?></th>
+                <th><?= $translations['address'] ?></th>
+                <th><?= $translations['created_at'] ?></th>
+                <th><?= $translations['actions'] ?></th>
             </tr>
         </thead>
         <tbody>
@@ -21,10 +22,11 @@
                 <tr>
                     <td><?= htmlspecialchars($ubicacion[1]) ?></td>
                     <td><?= htmlspecialchars($ubicacion[2]) ?></td>
+                    <td><?= htmlspecialchars($ubicacion[5]) ?></td>
                     <td>
-                        <a href="https://www.google.com/maps?q=<?= $ubicacion[3] ?>,<?= $ubicacion[4] ?>" class="btn btn-map">Ver Ubicacion</a>
-                        <a href="editar_ubicacion.php?id=<?= $ubicacion[0] ?>" class="btn btn-editar">Editar</a>
-                        <a href="eliminar_ubicacion.php?id=<?= $ubicacion[0] ?>" class="btn btn-eliminar" onclick="return confirm('¿Estás seguro de eliminar esta ubicación?')">Eliminar</a>
+                        <a href="https://www.google.com/maps?q=<?= $ubicacion[3] ?>,<?= $ubicacion[4] ?>" class="btn btn-map"><?= $translations['btn_location'] ?></a>
+                        <a href="editar_ubicacion.php?id=<?= $ubicacion[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                        <a href="eliminar_ubicacion.php?id=<?= $ubicacion[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_location'] ?>')"><?= $translations['btn_delete'] ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

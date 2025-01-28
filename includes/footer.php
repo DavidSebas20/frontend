@@ -1,6 +1,6 @@
 </main>
 <footer>
-    <p>&copy; 2024 Sistema de Gestión</p>
+    <p>&copy; <?= $translations['footer'] ?></p>
 </footer>
 </body>
 </html>

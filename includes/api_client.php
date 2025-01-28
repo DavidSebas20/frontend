@@ -1,6 +1,6 @@
 <?php
 function apiRequest($method, $endpoint, $data = null) {
-    $url = "https://backend-c-eventos-1.onrender.com/api/" . $endpoint;
+    $url = "https://backend-c-eventos.onrender.com/api/" . $endpoint;
     $options = [
         "http" => [
             "method" => $method,
