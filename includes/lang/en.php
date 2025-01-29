@@ -65,4 +65,5 @@ return [
     'manage_locations' => 'Manage Locations',
     'edit_location' => 'Edit Location',
     'success_edit_location' => 'Location edited successfully!',
+    'help' => 'Help',
 ];

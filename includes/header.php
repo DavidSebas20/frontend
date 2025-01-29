@@ -20,7 +20,11 @@ $translations = loadLanguage($lang);
 
 <body>
     <header>
+        <div class="help-button">
+            <a href="ayuda.php" class="btn btn-primary"><?= $translations['help'] ?></a>
+        </div>
         <h1><?= htmlspecialchars($translations['system']) ?></h1>
+
         <div class="language-switch">
             <a href="<?= buildUrlWithParams(['lang' => 'en']) ?>">English</a> |
             <a href="<?= buildUrlWithParams(['lang' => 'es']) ?>">Español</a>
@@ -30,6 +34,7 @@ $translations = loadLanguage($lang);
             <a href="registrar.php"><?= htmlspecialchars($translations['register']) ?></a>
             <a href="consultar.php"><?= htmlspecialchars($translations['consult']) ?></a>
             <a href="gestionar.php"><?= htmlspecialchars($translations['managment']) ?></a>
+
         </nav>
     </header>
 </body>

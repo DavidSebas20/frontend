@@ -65,4 +65,5 @@ return [
     'manage_locations' => 'Gestión de Ubicaciones',
     'success_edit_location' => '¡Ubicación editada exitosamente!',
     'edit_location' => 'Editar Ubicación',
+    'help' => 'Ayuda',
 ];

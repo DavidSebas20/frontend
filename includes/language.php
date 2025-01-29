@@ -4,7 +4,7 @@ function loadLanguage($lang = 'es') {
     if (file_exists($file)) {
         return include($file);
     }
-    return include(__DIR__ . '/lang/en.php'); // Idioma predeterminado
+    return include(__DIR__ . '/lang/en.php'); 
 }
 function buildUrlWithParams($newParams = []) {
     $currentParams = $_GET;

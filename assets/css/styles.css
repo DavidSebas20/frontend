@@ -101,6 +101,31 @@ p {
     text-decoration: underline;
 }
 
+.help-button {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Lo coloca en la esquina superior izquierda */
+}
+
+.help-button a {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #0056A0; /* Azul más oscuro para mejor contraste */
+    border: 2px solid #0056A0; /* Borde del mismo color que el fondo */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.help-button a:hover {
+    background-color: #003f7f; /* Azul más oscuro al pasar el mouse */
+    border-color: #003f7f; /* Borde del mismo color al hacer hover */
+}
+
+
 /* Botón para contactos */
 .btn-contactos {
     background-color: #3b6fb6;
