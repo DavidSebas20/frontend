@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '\language.php';
-session_start();
+include 'language.php';
 $lang = $_GET['lang'] ?? $_SESSION['lang'] ?? 'es';
 $_SESSION['lang'] = $lang;
 $translations = loadLanguage($lang);
