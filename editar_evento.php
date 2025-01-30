@@ -3,7 +3,7 @@
 <div class="container">
     <?php
     include 'includes/header.php';
-    include 'includes/language.php';
+    include 'includes/api_client.php';
 
     $id = $_GET['id'];
 
