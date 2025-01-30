@@ -24,8 +24,18 @@
         ];
 
         try {
-            apiRequest("POST", "eventos", $data);
-            $successMessage = $translations['success_add_event'];
+            $response = apiRequest("POST", "eventos", $data);
+        
+            if (isset($response["error"]) && $response["error"] === true) {
+                // Si el error es relacionado con la longitud del título
+                if (strpos($response["message"], "El título no debe superar los 100 caracteres.") !== false) {
+                    $errorMessage = "Error: El título es demasiado largo. Debe tener un máximo de 100 caracteres.";
+                } else {
+                    $errorMessage = "Error {$response['status']}: " . $response["message"];
+                }
+            } else {
+                $successMessage = $translations['success_add_event'];
+            }
         } catch (Exception $e) {
             $errorMessage = "Error: " . $e->getMessage();
         }
