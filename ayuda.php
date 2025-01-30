@@ -11,7 +11,7 @@
     <?php include 'includes/header.php'; ?>
     <h2><?= $translations['welcome_help'] ?></h2>
     <div class="video-container">
-            <iframe width="660" height="415" src="https://www.youtube.com/embed/VIDEO_ID" 
+            <iframe width="660" height="415" src="https://www.youtube.com/embed/Sdz3HRkpUL8" 
                 title="Video de ayuda" frameborder="0" allowfullscreen>
             </iframe>
         </div>
