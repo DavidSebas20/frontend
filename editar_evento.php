@@ -1,29 +1,44 @@
-<?php
-include 'includes/api_client.php';
+<link rel="stylesheet" href="assets/css/styles.css">
 
-$id = $_GET['id'];
+<div class="container">
+    <?php
+    include 'includes/header.php';
+    include 'includes/language.php';
 
-$successMessage = null; 
-$errorMessage = null;   
+    $id = $_GET['id'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $recordatorio = ($_POST['recordatorio'] === 'true' || $_POST['recordatorio'] === '1') ? true : false;
+    $successMessage = null;
+    $errorMessage = null;
 
-    $data = [
-        'id' => $id,
-        'titulo' => $_POST['titulo'],
-        'invitados' => $_POST['invitados'],
-        'fechaHora' => $_POST['fecha_hora'],
-        'zonaHoraria' => $_POST['zona_horaria'],
-        'descripcion' => $_POST['descripcion'],
-        'clasificacion' => $_POST['clasificacion'],
-        'lugar' => $_POST['lugar'],
-        'recordatorio' => $recordatorio
-    ];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $recordatorio = ($_POST['recordatorio'] === 'true' || $_POST['recordatorio'] === '1') ? true : false;
 
-    try {
-        apiRequest("PUT", "eventos/$id", $data);
-        $successMessage = "Evento editado exitosamente!";
+        $data = [
+            'id' => $id,
+            'titulo' => $_POST['titulo'],
+            'invitados' => $_POST['invitados'],
+            'fechaHora' => $_POST['fecha_hora'],
+            'zonaHoraria' => $_POST['zona_horaria'],
+            'descripcion' => $_POST['descripcion'],
+            'clasificacion' => $_POST['clasificacion'],
+            'lugar' => $_POST['lugar'],
+            'recordatorio' => $recordatorio
+        ];
+
+        try {
+            apiRequest("PUT", "eventos/$id", $data);
+            $successMessage = $translations['success_edit_event'];
+            try {
+                $ubicaciones = apiRequest("GET", "eventos/$id");
+                $ubicacion = $ubicaciones[0];
+            } catch (Exception $e) {
+                echo "<p>Error: {$e->getMessage()}</p>";
+                exit;
+            }
+        } catch (Exception $e) {
+            $errorMessage = "Error: " . $e->getMessage();
+        }
+    } else {
         try {
             $ubicaciones = apiRequest("GET", "eventos/$id");
             $ubicacion = $ubicaciones[0];
@@ -31,25 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<p>Error: {$e->getMessage()}</p>";
             exit;
         }
-    } catch (Exception $e) {
-        $errorMessage = "Error: " . $e->getMessage();
     }
-} else {
-    try {
-        $ubicaciones = apiRequest("GET", "eventos/$id");
-        $ubicacion = $ubicaciones[0];
-    } catch (Exception $e) {
-        echo "<p>Error: {$e->getMessage()}</p>";
-        exit;
-    }
-}
-?>
+    ?>
 
-<link rel="stylesheet" href="assets/css/styles.css">
-
-<div class="container">
-    <?php include 'includes/header.php'; ?>
     <h1><?= $translations['edit_event'] ?></h1>
+    
     <?php
     if ($successMessage) {
         echo "<p style='color: green;'>{$successMessage}</p>";
@@ -57,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<p style='color: red;'>{$errorMessage}</p>";
     }
     ?>
+
     <form method="POST">
         <label><?= $translations['title'] ?>:</label>
         <input type="text" name="titulo" value="<?= htmlspecialchars($ubicacion[1]) ?>" required><br>

@@ -66,4 +66,6 @@ return [
     'success_edit_location' => '¡Ubicación editada exitosamente!',
     'edit_location' => 'Editar Ubicación',
     'help' => 'Ayuda',
+    'welcome_help' => 'Bienvenido a la sección de ayuda',
+    'suceess_edit_event' => 'Evento editado exitosamente!',
 ];

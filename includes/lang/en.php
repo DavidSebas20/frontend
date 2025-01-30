@@ -66,4 +66,6 @@ return [
     'edit_location' => 'Edit Location',
     'success_edit_location' => 'Location edited successfully!',
     'help' => 'Help',
+    'welcome_help' => 'Welcome to the help section',
+    'suceess_edit_event' => 'Event edited successfully!',
 ];

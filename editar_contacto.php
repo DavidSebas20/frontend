@@ -1,24 +1,40 @@
-<?php
-include 'includes/api_client.php';
+<link rel="stylesheet" href="assets/css/styles.css">
+<div class="container">
+    <?php
+    ob_start(); 
+    include 'includes/header.php';
+    include 'includes/api_client.php';
+    
 
-$successMessage = null;
-$errorMessage = null;
+    $successMessage = null;
+    $errorMessage = null;
 
-$id = $_GET['id'];
+    $id = $_GET['id'];
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = [
-        'Saludo' => $_POST['saludo'],
-        'NombreCompleto' => $_POST['nombre_completo'],
-        'NumeroIdentificacion' => $_POST['numero_identificacion'],
-        'CorreoElectronico' => $_POST['correo'],
-        'NumeroTelefono' => $_POST['telefono'],
-        'Fotografia' => $_POST['fotografia']
-    ];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $data = [
+            'Saludo' => $_POST['saludo'],
+            'NombreCompleto' => $_POST['nombre_completo'],
+            'NumeroIdentificacion' => $_POST['numero_identificacion'],
+            'CorreoElectronico' => $_POST['correo'],
+            'NumeroTelefono' => $_POST['telefono'],
+            'Fotografia' => $_POST['fotografia']
+        ];
 
-    try {
-        apiRequest("PUT", "contactos/$id", $data);
-        $successMessage = $translations['manage_contacts'];
+        try {
+            apiRequest("PUT", "contactos/$id", $data);
+            $successMessage = $translations['success_edit_contact'];
+            try {
+                $ubicaciones = apiRequest("GET", "contactos/$id");
+                $ubicacion = $ubicaciones[0];
+            } catch (Exception $e) {
+                echo "<p>Error: {$e->getMessage()}</p>";
+                exit;
+            }
+        } catch (Exception $e) {
+            $errorMessage = "Error: " . $e->getMessage();
+        }
+    } else {
         try {
             $ubicaciones = apiRequest("GET", "contactos/$id");
             $ubicacion = $ubicaciones[0];
@@ -26,24 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo "<p>Error: {$e->getMessage()}</p>";
             exit;
         }
-    } catch (Exception $e) {
-        $errorMessage = "Error: " . $e->getMessage();
     }
-} else {
-    try {
-        $ubicaciones = apiRequest("GET", "contactos/$id");
-        $ubicacion = $ubicaciones[0];
-    } catch (Exception $e) {
-        echo "<p>Error: {$e->getMessage()}</p>";
-        exit;
-    }
-}
-?>
-<link rel="stylesheet" href="assets/css/styles.css">
-
-<div class="container">
-    <?php include 'includes/header.php'; ?>
+    ?>
     <h1><?= $translations['edit_contact'] ?></h1>
+
     <?php
     if ($successMessage) {
         echo "<p style='color: green;'>{$successMessage}</p>";
@@ -51,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "<p style='color: red;'>{$errorMessage}</p>";
     }
     ?>
+    
     <form method="POST">
         <label><?= $translations['greeting'] ?>:</label>
         <input type="text" name="saludo" value="<?= htmlspecialchars($ubicacion[1]) ?>" required><br>
