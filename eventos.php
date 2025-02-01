@@ -58,8 +58,8 @@
                     <td><i class="fa fa-check-circle" style="color: green;"></i></td>
                     <td><?= htmlspecialchars($evento[9]) ?></td>
                     <td>
-                        <a href="editar_evento.php?id=<?= $evento[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
-                        <a href="eliminar_evento.php?id=<?= $evento[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_event'] ?>')"><?= $translations['btn_delete'] ?></a>
+                        <a href="editar_evento.php?id=<?= $evento[0] ?>&lang=<?= $lang ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                        <a href="eliminar_evento.php?id=<?= $evento[0] ?>&lang=<?= $lang ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_event'] ?>')"><?= $translations['btn_delete'] ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -95,8 +95,8 @@
                     <td><i class="fa fa-times-circle" style="color: red;"></i></td>
                     <td><?= htmlspecialchars($evento[9]) ?></td>
                     <td>
-                        <a href="editar_evento.php?id=<?= $evento[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
-                        <a href="eliminar_evento.php?id=<?= $evento[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_event'] ?>')"><?= $translations['btn_delete'] ?></a>
+                        <a href="editar_evento.php?id=<?= $evento[0] ?>&lang=<?= $lang ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                        <a href="eliminar_evento.php?id=<?= $evento[0] ?>&lang=<?= $lang ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_event'] ?>')"><?= $translations['btn_delete'] ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -132,8 +132,8 @@
                     <td><i class="fa fa-check-circle" style="color: orange;"></i></td>
                     <td><?= htmlspecialchars($evento[9]) ?></td>
                     <td>
-                        <a href="editar_evento.php?id=<?= $evento[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
-                        <a href="eliminar_evento.php?id=<?= $evento[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_event'] ?>')"><?= $translations['btn_delete'] ?></a>
+                        <a href="editar_evento.php?id=<?= $evento[0] ?>&lang=<?= $lang ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                        <a href="eliminar_evento.php?id=<?= $evento[0] ?>&lang=<?= $lang ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_event'] ?>')"><?= $translations['btn_delete'] ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

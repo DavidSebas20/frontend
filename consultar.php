@@ -93,8 +93,8 @@
                             </td>
                             <td><?= htmlspecialchars($resultado[7]) ?></td>
                             <td>
-                                <a href="editar_contacto.php?id=<?= $resultado[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
-                                <a href="eliminar_contacto.php?id=<?= $resultado[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm'] ?>')"><?= $translations['btn_delete'] ?></a>
+                                <a href="editar_contacto.php?id=<?= $resultado[0] ?>&lang=<?= $lang ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                                <a href="eliminar_contacto.php?id=<?= $resultado[0] ?>&lang=<?= $lang ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm'] ?>')"><?= $translations['btn_delete'] ?></a>
                             </td>
                         <?php elseif ($tabla === "eventos"): ?>
                             <td><?= htmlspecialchars($resultado[1]) ?></td>
@@ -113,8 +113,8 @@
                             </td>
                             <td><?= htmlspecialchars($resultado[9]) ?></td>
                             <td>
-                                <a href="editar_evento.php?id=<?= $resultado[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
-                                <a href="eliminar_evento.php?id=<?= $resultado[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_event'] ?>')"><?= $translations['btn_delete'] ?></a>
+                                <a href="editar_evento.php?id=<?= $resultado[0] ?>&lang=<?= $lang ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                                <a href="eliminar_evento.php?id=<?= $resultado[0] ?>&lang=<?= $lang ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_event'] ?>')"><?= $translations['btn_delete'] ?></a>
                             </td>
                         <?php elseif ($tabla === "ubicaciones"): ?>
                             <td><?= htmlspecialchars($resultado[1]) ?></td>
@@ -122,8 +122,8 @@
                             <td><?= htmlspecialchars($resultado[5]) ?></td>
                             <td>
                                 <a href="https://www.google.com/maps?q=<?= $resultado[3] ?>,<?= $resultado[4] ?>" class="btn btn-map"><?= $translations['btn_location'] ?></a>
-                                <a href="editar_ubicacion.php?id=<?= $resultado[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
-                                <a href="eliminar_ubicacion.php?id=<?= $resultado[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_location'] ?>')"><?= $translations['btn_delete'] ?></a>
+                                <a href="editar_ubicacion.php?id=<?= $resultado[0] ?>&lang=<?= $lang ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                                <a href="eliminar_ubicacion.php?id=<?= $resultado[0] ?>&lang=<?= $lang ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_location'] ?>')"><?= $translations['btn_delete'] ?></a>
                             </td>
                         <?php endif; ?>
                     </tr>

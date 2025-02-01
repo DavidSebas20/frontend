@@ -11,9 +11,9 @@
     <h2><?= $translations['welcome'] ?></h2>
     <p><?= $translations['option'] ?></p>
     <ul>
-        <li><a href="registrar.php"><?= $translations['register'] ?></a></li>
-        <li><a href="consultar.php"><?= $translations['consult'] ?></a></li>
-        <li><a href="gestionar.php"><?= $translations['managment'] ?></a></li>
+        <li><a href="registrar.php?lang=<?= $lang ?>"><?= $translations['register'] ?></a></li>
+        <li><a href="consultar.php?lang=<?= $lang ?>"><?= $translations['consult'] ?></a></li>
+        <li><a href="gestionar.php?lang=<?= $lang ?>"><?= $translations['managment'] ?></a></li>
     </ul>
     <?php include 'includes/footer.php'; ?>
 </div>

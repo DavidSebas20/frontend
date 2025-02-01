@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="assets/css/styles.css">
 <div class="container">
     <?php
-    ob_start();
     include 'includes/header.php';
     include 'includes/api_client.php';
 

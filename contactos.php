@@ -33,8 +33,8 @@
                     </td>
                     <td><?= htmlspecialchars($ubicacion[7]) ?></td>
                     <td>
-                        <a href="editar_contacto.php?id=<?= $ubicacion[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
-                        <a href="eliminar_contacto.php?id=<?= $ubicacion[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm'] ?>')"><?= $translations['btn_delete'] ?></a>
+                        <a href="editar_contacto.php?id=<?= $ubicacion[0] ?>&lang=<?= $lang ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                        <a href="eliminar_contacto.php?id=<?= $ubicacion[0] ?>&lang=<?= $lang ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm'] ?>')"><?= $translations['btn_delete'] ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>

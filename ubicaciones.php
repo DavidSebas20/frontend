@@ -25,8 +25,8 @@
                     <td><?= htmlspecialchars($ubicacion[5]) ?></td>
                     <td>
                         <a href="https://www.google.com/maps?q=<?= $ubicacion[3] ?>,<?= $ubicacion[4] ?>" class="btn btn-map"><?= $translations['btn_location'] ?></a>
-                        <a href="editar_ubicacion.php?id=<?= $ubicacion[0] ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
-                        <a href="eliminar_ubicacion.php?id=<?= $ubicacion[0] ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_location'] ?>')"><?= $translations['btn_delete'] ?></a>
+                        <a href="editar_ubicacion.php?id=<?= $ubicacion[0] ?>&lang=<?= $lang ?>" class="btn btn-editar"><?= $translations['btn_edit'] ?></a>
+                        <a href="eliminar_ubicacion.php?id=<?= $ubicacion[0] ?>&lang=<?= $lang ?>" class="btn btn-eliminar" onclick="return confirm('<?= $translations['btn_confirm_location'] ?>')"><?= $translations['btn_delete'] ?></a>
                     </td>
                 </tr>
             <?php endforeach; ?>
